@@ -28,8 +28,6 @@ returns text
     end;
     $$ language plpgsql;
 
-drop aggregate min_to_max_test(anyarray);
-
 
 create aggregate min_to_max(int)
 (
@@ -38,3 +36,8 @@ create aggregate min_to_max(int)
     stype = int[],
     finalfunc = f_min_to_max_2
     );
+    
+    /*
+    I newer used C - langiage, but i read about mask-type "internal" in custom aggregate.
+    We also can swap int-type to anyarray, and include READ_WRITE options to FINALFUNC_MODIFY
+    */
